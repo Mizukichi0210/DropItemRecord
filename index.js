@@ -76,6 +76,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.DESERT_FOGAN].category] ,
     bot.reply(message,"処理中にエラーが発生しました");
   }
 });
+
 controller.hears(["(.*)"], ['direct_message'], (bot,message) =>{
 	bot.reply(message,"*help or ヘルプ*\nを参照してください");
 });
