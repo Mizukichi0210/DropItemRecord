@@ -136,6 +136,31 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.AKUMAN_TEMPLE].category] 
   }
 });
 
+controller.hears(["(^([1-9]\d*|0)(\.\d+)?$)"],['direct_message'],(bot,message) => {
+
+  let exp = message.match[1];
+  let huntingTime = message.text.split("\n")[1];
+
+  if(huntingTime === undefined || huntingTime === null){
+    bot.reply(message,"2行目に狩り時間を入力してください");
+    return;
+  }
+
+  try{
+    
+    let insert = "INSERT INTO PLAYER_EXP (EXP,HUNT_TIME,DATE)";
+    let now = new Date();
+    let date = now.toFormat('YYYY-MM-DD');
+
+    con.query(insert,[exp,huntingTime,isRegister,date],function(err,row,fields){
+      bot.reply(message,"登録完了！");
+    });
+  }catch(err){
+    bot.reply(message,"処理中にエラーが発生しました");
+  }
+});
+
+
 controller.hears(["(.*)"], ['direct_message'], (bot,message) =>{
 	bot.reply(message,"*help or ヘルプ*\nを参照してください");
 });
