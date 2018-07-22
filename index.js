@@ -36,6 +36,9 @@ const MONSTER_NAME = {
   }
 };
 
+/**
+ * 砂漠フォガンのドロップ数記録 / ドロップ数確認
+ */
 controller.hears([MONSTER_NAME.properties[MONSTER_NAME.DESERT_FOGAN].category] , ['direct_message'], (bot,message) =>{
 
   let monsterCategory = MONSTER_NAME.properties[MONSTER_NAME.DESERT_FOGAN].category;
@@ -57,7 +60,12 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.DESERT_FOGAN].category] ,
             bot.reply(message, monsterCategory + "のドロップ数は0です");
           }
           else{
-            bot.reply(message, monsterCategory + "のドロップ数は" + sum + "です");
+            let findByItemByItemId = "SELECT * FROM ITEM WHERE ID = ?";
+            con.query(findByItemByItemId,[itemId],function(err,result,fields){
+              if(err) throw err;
+              let itemName = result[0].name;
+              bot.reply(message, itemName + "のドロップ数は" + sum + "です");
+            });
           }
         });
 
@@ -77,6 +85,9 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.DESERT_FOGAN].category] ,
   }
 });
 
+/**
+ * アクマン寺院のドロップ数記録 / ドロップ数確認
+ */
 controller.hears([MONSTER_NAME.properties[MONSTER_NAME.AKUMAN_TEMPLE].category] , ['direct_message'], (bot,message) =>{
 
   let monsterCategory = MONSTER_NAME.properties[MONSTER_NAME.AKUMAN_TEMPLE].category;
@@ -98,7 +109,13 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.AKUMAN_TEMPLE].category] 
             bot.reply(message, monsterCategory + "のドロップ数は0です");
           }
           else{
-            bot.reply(message, monsterCategory + "のドロップ数は" + sum + "です");
+            let findByItemByItemId = "SELECT * FROM ITEM WHERE ID = ?";
+            con.query(findByItemByItemId,[itemId],function(err,result,fields){
+              if(err) throw err;
+              let itemName = result[0].name;
+              bot.reply(message, itemName + "のドロップ数は" + sum + "です");
+            });
+           
           }
         });
 
