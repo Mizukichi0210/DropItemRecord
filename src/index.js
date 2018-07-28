@@ -66,7 +66,10 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.DESERT_FOGAN].category] ,
             con.query(findByItemByItemId,[itemId],function(err,result,fields){
               if(err) throw err;
               let itemName = result[0].name;
-              bot.reply(message, itemName + "のドロップ数は" + sum + "です");
+              let itemPrice = result[0].price;
+              let itemNum = itemPrice * sum;
+              itemNum = itemNum.toString().replace(/(\d)(?=(\d{3})+$)/g , '$1,');
+              bot.reply(message, itemName + "のドロップ数は" + sum + "、総価格は" + itemNum + "シルバーです");
             });
           }
         });
@@ -82,7 +85,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.DESERT_FOGAN].category] ,
         });
       }
     });
-  }catch(err){
+}catch(err){
     log(err);
     bot.reply(message,"処理中にエラーが発生しました");
   }
@@ -116,7 +119,10 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.AKUMAN_TEMPLE].category] 
             con.query(findByItemByItemId,[itemId],function(err,result,fields){
               if(err) throw err;
               let itemName = result[0].name;
-              bot.reply(message, itemName + "のドロップ数は" + sum + "です");
+              let itemPrice = result[0].price;
+              let itemNum = itemPrice * sum;
+              itemNum = itemNum.toString().replace(/(\d)(?=(\d{3})+$)/g , '$1,');
+              bot.reply(message, itemName + "のドロップ数は" + sum + "、総価格は" + itemNum + "シルバーです");
             });
            
           }
