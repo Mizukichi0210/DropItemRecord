@@ -62,7 +62,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.DESERT_FOGAN].category] ,
             bot.reply(message, monsterCategory + "のドロップ数は0です");
           }
           else{
-            let findByItemByItemId = "SELECT * FROM ITEM WHERE ID = ?";
+            let findByItemByItemId = "SELECT * FROM ITEM WHERE ID = ? AND IS_DELETE = '0'";
             con.query(findByItemByItemId,[itemId],function(err,result,fields){
               if(err) throw err;
               let itemName = result[0].name;
@@ -116,7 +116,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.AKUMAN_TEMPLE].category] 
             bot.reply(message, monsterCategory + "のドロップ数は0です");
           }
           else{
-            let findByItemByItemId = "SELECT * FROM ITEM WHERE ID = ?";
+            let findByItemByItemId = "SELECT * FROM ITEM WHERE ID = ? AND IS_DELETE = '0'";
             con.query(findByItemByItemId,[itemId],function(err,result,fields){
               if(err) throw err;
               let itemName = result[0].name;
