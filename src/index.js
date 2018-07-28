@@ -69,6 +69,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.DESERT_FOGAN].category] ,
               let itemPrice = result[0].price;
               let itemNum = itemPrice * sum;
               itemNum = itemNum.toString().replace(/(\d)(?=(\d{3})+$)/g , '$1,');
+              sum = sum.toString().replace(/(\d)(?=(\d{3})+$)/g , '$1,');
               bot.reply(message, itemName + "のドロップ数は" + sum + "、総価格は" + itemNum + "シルバーです");
             });
           }
@@ -122,6 +123,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.AKUMAN_TEMPLE].category] 
               let itemPrice = result[0].price;
               let itemNum = itemPrice * sum;
               itemNum = itemNum.toString().replace(/(\d)(?=(\d{3})+$)/g , '$1,');
+              sum = sum.toString().replace(/(\d)(?=(\d{3})+$)/g , '$1,');
               bot.reply(message, itemName + "のドロップ数は" + sum + "、総価格は" + itemNum + "シルバーです");
             });
            
