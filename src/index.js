@@ -77,10 +77,10 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.DESERT_FOGAN].category] ,
 
       }else{
 
-        let insert = "insert into drop_items (item_id,number,date) values(?,?,?)";
+        let insert = "INSERT INTO drop_items (item_id,number,is_delete,date) VALUES(?,?,?,?)";
         let now = new Date();
         let date = now.toFormat('YYYY-MM-DD');
-        con.query(insert,[itemId,dropItemNum,date],function(err,rows,fields) {
+        con.query(insert,[itemId,dropItemNum,0,date],function(err,rows,fields) {
           if(err) throw err;
           bot.reply(message,monsterCategory + "、ドロップアイテム数" + dropItemNum + "個で記録しました");
         });
@@ -132,10 +132,10 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.AKUMAN_TEMPLE].category] 
 
       }else{
 
-        let insert = "insert into drop_items (item_id,number,date) values(?,?,?)";
+        let insert = "INSERT INTO drop_items (item_id,number,is_delete,date) VALUES(?,?,?,?)";
         let now = new Date();
         let date = now.toFormat('YYYY-MM-DD');
-        con.query(insert,[itemId,dropItemNum,date],function(err,rows,fields) {
+        con.query(insert,[itemId,dropItemNum,0,date],function(err,rows,fields) {
           if(err) throw err;
           bot.reply(message,monsterCategory + "、ドロップアイテム数" + dropItemNum + "個で記録しました");
         });
