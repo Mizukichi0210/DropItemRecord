@@ -1,0 +1,1 @@
+CREATE DATABASE black_desert_online;

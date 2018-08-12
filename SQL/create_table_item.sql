@@ -1,0 +1,1 @@
+CREATE TABLE `black_desert_online`.`item` ( `id` INT NOT NULL AUTO_INCREMENT , `name` VARCHAR(20) NOT NULL , `price` INT(11) NOT NULL , `monster_category_id` VARCHAR(10) NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
