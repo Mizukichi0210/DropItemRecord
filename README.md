@@ -29,7 +29,7 @@ Slack
 [PHPMyAdmin](https://www.phpmyadmin.net/)
 
 forever
-```bash
+```cmd
 npm install -g forever
 forever start index.js
 ```
@@ -38,12 +38,14 @@ forever start index.js
 
 __レコードは例__
 
+  データベース生成、テーブル生成する際に使用するSQL文はSQLディレクトリ内
+
 * drop_item
 
-|id(pk)  |item_id(varchar5)  |number(varchar10)  |date(date)  |
-|---|---|---|---|
-|1  |1  |3600  |2018-07-01  |
-|2  |5  |10000  |2018-07-05  |
+|id(pk)  |item_id(varchar5)  |number(varchar10)  |is_delete(char1) |date(date)  |
+|---|---|---|---|---|
+|1  |1  |3600  |0|2018-07-01  |---|
+|2  |5  |10000  |0|2018-07-05  |---|
 
 * item
 
