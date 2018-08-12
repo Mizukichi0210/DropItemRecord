@@ -1,7 +1,7 @@
 var fs = require('fs-extra');
 const PATH = "../log/log.txt";
 
-function write(PATH,e){
+function write(e){
 
     fs.appendFile(PATH,e,'utf-8',function(err){
 
