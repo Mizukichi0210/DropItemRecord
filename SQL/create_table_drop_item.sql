@@ -1,0 +1,1 @@
+CREATE TABLE `black_desert_online`.`drop_item` ( `id` INT NOT NULL AUTO_INCREMENT , `item_id` VARCHAR(5) NOT NULL , `number` VARCHAR(10) NOT NULL , `is_delete` CHAR(1) NOT NULL DEFAULT '0' , `date` DATE NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
