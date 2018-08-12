@@ -7,8 +7,8 @@ require('date-utils');
 
 var con = mysql.createConnection({
   host     : 'localhost',
-  user     : 'test',
-  password : 'test',
+  user     : 'root',
+  password : '',
   database : 'black_desert_online'
 });
 
@@ -56,7 +56,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.DESERT_FOGAN].category] ,
 
       if(dropItemNum === undefined || dropItemNum === null){
         //TODO 月毎実装
-        let findById = "SELECT SUM(NUMBER) as sum FROM DROP_ITEMS WHERE ITEM_ID = ?";
+        let findById = "SELECT SUM(NUMBER) as sum FROM DROP_ITEM WHERE ITEM_ID = ? AND IS_DELETE = '0'";
         con.query(findById,[itemId],function(err,result,fields){
           if(err) throw err;
           let sum = result[0].sum;
@@ -64,7 +64,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.DESERT_FOGAN].category] ,
             bot.reply(message, monsterCategory + "のドロップ数は0です");
           }
           else{
-            let findByItemByItemId = "SELECT * FROM ITEM WHERE ID = ? AND IS_DELETE = '0'";
+            let findByItemByItemId = "SELECT * FROM DROP_ITEM WHERE IS_DELETE = '0' AND ITEM_ID = ?";
             con.query(findByItemByItemId,[itemId],function(err,result,fields){
               if(err) throw err;
               let itemName = result[0].name;
@@ -79,7 +79,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.DESERT_FOGAN].category] ,
 
       }else{
 
-        let insert = "INSERT INTO drop_items (item_id,number,is_delete,date) VALUES(?,?,?,?)";
+        let insert = "INSERT INTO drop_item (item_id,number,is_delete,date) VALUES(?,?,?,?)";
         let now = new Date();
         let date = now.toFormat('YYYY-MM-DD');
         con.query(insert,[itemId,dropItemNum,0,date],function(err,rows,fields) {
@@ -110,7 +110,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.AKUMAN_TEMPLE].category] 
 
       if(dropItemNum === undefined || dropItemNum === null){
         //TODO 月毎実装
-        let findById = "SELECT SUM(NUMBER) as sum FROM DROP_ITEMS WHERE ITEM_ID = ?";
+        let findById = "SELECT SUM(NUMBER) as sum FROM DROP_ITEM WHERE ITEM_ID = ? AND IS_DELETE = '0'";
         con.query(findById,[itemId],function(err,result,fields){
           if(err) throw err;
           let sum = result[0].sum;
@@ -118,7 +118,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.AKUMAN_TEMPLE].category] 
             bot.reply(message, monsterCategory + "のドロップ数は0です");
           }
           else{
-            let findByItemByItemId = "SELECT * FROM ITEM WHERE ID = ? AND IS_DELETE = '0'";
+            let findByItemByItemId = "SELECT * FROM DROP_ITEM WHERE IS_DELETE = '0' AND ITEM_ID = ?";
             con.query(findByItemByItemId,[itemId],function(err,result,fields){
               if(err) throw err;
               let itemName = result[0].name;
@@ -134,7 +134,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.AKUMAN_TEMPLE].category] 
 
       }else{
 
-        let insert = "INSERT INTO drop_items (item_id,number,is_delete,date) VALUES(?,?,?,?)";
+        let insert = "INSERT INTO drop_item (item_id,number,is_delete,date) VALUES(?,?,?,?)";
         let now = new Date();
         let date = now.toFormat('YYYY-MM-DD');
         con.query(insert,[itemId,dropItemNum,0,date],function(err,rows,fields) {
@@ -165,7 +165,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.FILA_KU].category] , ['di
 
       if(dropItemNum === undefined || dropItemNum === null){
         //TODO 月毎実装
-        let findById = "SELECT SUM(NUMBER) as sum FROM DROP_ITEMS WHERE ITEM_ID = ?";
+        let findById = "SELECT SUM(NUMBER) as sum FROM DROP_ITEM WHERE ITEM_ID = ? AND IS_DELETE = '0'";
         con.query(findById,[itemId],function(err,result,fields){
           if(err) throw err;
           let sum = result[0].sum;
@@ -173,7 +173,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.FILA_KU].category] , ['di
             bot.reply(message, monsterCategory + "のドロップ数は0です");
           }
           else{
-            let findByItemByItemId = "SELECT * FROM ITEM WHERE ID = ? AND IS_DELETE = '0'";
+            let findByItemByItemId = "SELECT * FROM ITEM WHERE ID = ?";
             con.query(findByItemByItemId,[itemId],function(err,result,fields){
               if(err) throw err;
               let itemName = result[0].name;
@@ -189,7 +189,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.FILA_KU].category] , ['di
 
       }else{
 
-        let insert = "INSERT INTO drop_items (item_id,number,is_delete,date) VALUES(?,?,?,?)";
+        let insert = "INSERT INTO drop_item (item_id,number,is_delete,date) VALUES(?,?,?,?)";
         let now = new Date();
         let date = now.toFormat('YYYY-MM-DD');
         con.query(insert,[itemId,dropItemNum,0,date],function(err,rows,fields) {
