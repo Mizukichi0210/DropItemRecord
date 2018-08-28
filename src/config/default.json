@@ -1,0 +1,8 @@
+{
+    "database":{
+        "url":"localhost",
+        "user":"root",
+        "password":"userworld5423",
+        "name":"black_desert_online"
+    }
+}

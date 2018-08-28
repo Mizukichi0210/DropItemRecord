@@ -1,0 +1,8 @@
+{
+    "database":{
+        "url":"Your database's URL",
+        "user":"Your user name",
+        "password":"**********",
+        "name":"dabatase name"
+    }
+}

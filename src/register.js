@@ -4,7 +4,7 @@ require('date-utils');
 
 var con = mysql.createConnection({
     host     : 'localhost',
-    user     : 'root',
+    user     : '',
     password : '',
     database : 'black_desert_online'
   });
@@ -12,7 +12,7 @@ var con = mysql.createConnection({
 function register(monsterCategory , dropItemNum , bot , message) {
 
     console.log(monsterCategory)
-    let findByMonsterCategoryId = "SELECT * FROM ITEM WHERE MONSTER_CATEGORY_ID = (SELECT id FROM MONSTER_CATEGORY WHERE CATEGORY = ?)";
+    let findByMonsterCategoryId = "SELECT * FROM ITEM WHERE MONSTER_CATEGORY_ID = (SELECT id FROM MONSTER_CATEGORY WHERE NAME = ?)";
     con.query(findByMonsterCategoryId ,[monsterCategory],function(err,result,fields){
       if(err) throw err;
       let itemId = result[0].id;
