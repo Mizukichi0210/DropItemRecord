@@ -4,8 +4,8 @@ require('date-utils');
 
 var con = mysql.createConnection({
     host     : 'localhost',
-    user     : 'root',
-    password : 'uverworld5423',
+    user     : '',
+    password : '',
     database : 'black_desert_online'
   });
   
