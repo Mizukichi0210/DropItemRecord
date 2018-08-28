@@ -61,7 +61,7 @@ controller.hears([MONSTER_NAME.properties[MONSTER_NAME.AKUMAN_TEMPLE].category] 
   let register = registerModule(monsterCategory,dropItemNum,bot,message);
   try{
     async.series(register,(err) =>{
-
+      if(err) throw err;
     });
   }catch(err){
     log(err);
