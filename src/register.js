@@ -3,10 +3,10 @@ var log = require('./log');
 require('date-utils');
 
 var con = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : 'uverworld5423',
-    database : 'black_desert_online'
+    host     : '',
+    user     : '',
+    password : '',
+    database : ''
   });
   
 /**
