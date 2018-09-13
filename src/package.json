@@ -13,6 +13,7 @@
     "botkit": "^0.6.15",
     "date-utils": "^1.2.21",
     "fs-extra": "^7.0.0",
+    "log4js": "^3.0.5",
     "mysql": "^2.16.0"
   },
   "devDependencies": {},
