@@ -1,7 +1,7 @@
 var Botkit = require("botkit");
 var async = require('async');
 var log = require('./log');
-let registerModule = require('./register');
+let processModule = require('./process');
 
 require('date-utils');
 
@@ -19,10 +19,9 @@ controller.spawn({
  * ドロップ数記録 / ドロップ数確認
  */
 controller.hears(["(.*)"] , ['direct_message'], (bot,message) =>{
-
-  let register = registerModule(bot,message);
+  let process = processModule(bot,message);
   try{
-    async.series(register,(err) =>{
+    async.series(process,(err) =>{
 
     });
   }catch(err){

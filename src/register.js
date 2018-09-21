@@ -1,35 +1,5 @@
-var mysql = require('mysql');
-var log = require('./log');
-require('date-utils');
 
-var con = mysql.createConnection({
-    host     : '',
-    user     : '',
-    password : '',
-    database : ''
-  });
-  
-/**
- * モンスターカテゴリ設定
- * @readonly
- * @enum
- */
-const MONSTER_NAME = {
-
-  DESERT_FOGAN:1,
-  AKUMAN_TEMPLE:2,
-  FILA_KU:3,
-  FOREST_RONAROS:4,
-
-  properties:{
-    1:{ category : "砂漠フォガン"},
-    2:{ category : "アクマン寺院"},
-    3:{ category : "フィラ・ク"},
-    4:{ category : "森健太"},
-  }
-};
-
-function register(bot , message) {
+function register(bot , message, con, MONSTER_NAME) {
   
   let monsterCategory = message.match[0];
   let dropItemNum = message.text.split("\n")[1];
@@ -37,28 +7,7 @@ function register(bot , message) {
 
   let count = 0;
 
-  // 上手いやり方見つかるまで代用
-  for(let i in MONSTER_NAME){
-    if(i === "properties"){
-      break;
-    }
-    count++;
-  }
-
-  for(let i = 1; i <= count; i ++){
-
-    if(MONSTER_NAME.properties[i].category === monsterCategory){
-      isExistFlg = true;
-      break;
-    }
-  }
-
-  if(!isExistFlg){
-    bot.reply(message,"存在しないモンスターカテゴリです");
-    return;
-  }
-
-    let findByMonsterCategoryId = "SELECT * FROM ITEM WHERE MONSTER_CATEGORY_ID = (SELECT id FROM MONSTER_CATEGORY WHERE NAME = ?)";
+  let findByMonsterCategoryId = "SELECT * FROM ITEM WHERE MONSTER_CATEGORY_ID = (SELECT id FROM MONSTER_CATEGORY WHERE NAME = ?)";
     con.query(findByMonsterCategoryId ,[monsterCategory],function(err,result,fields){
       if(err) throw err;
       let itemId = result[0].id;
