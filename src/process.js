@@ -22,12 +22,14 @@ const MONSTER_NAME = {
   AKUMAN_TEMPLE:2,
   FILA_KU:3,
   FOREST_RONAROS:4,
+  MANSHAUM:5,
 
   properties:{
     1:{ category : "砂漠フォガン"},
     2:{ category : "アクマン寺院"},
     3:{ category : "フィラ・ク"},
     4:{ category : "森健太"},
+    5:{ category : "マンシャウム"},
   }
 };
 
