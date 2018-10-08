@@ -25,8 +25,9 @@ controller.hears(["(.*)"] , ['direct_message'], (bot,message) =>{
 
     });
   }catch(err){
-    log(err);
-    bot.reply(message,"処理中にエラーが発生しました");
+    log({message : err.message})
+    bot.reply(message,"コードに異常があります");
+
   }
 });
 
