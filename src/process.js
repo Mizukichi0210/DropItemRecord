@@ -1,7 +1,7 @@
 var async = require('async');
 var mysql = require('mysql');
 var log = require('./log');
-let registerModule = require('./register');
+let register_module = require('./register');
 require('date-utils');
 
 var con = mysql.createConnection({
@@ -35,7 +35,7 @@ const MONSTER_NAME = {
 
 function process(bot , message) {
 
-    let monsterCategory = message.match[0];
+    let monster_category = message.match[0];
 
     let count = 0;
     // 上手いやり方見つかるまで代用
@@ -46,15 +46,16 @@ function process(bot , message) {
         count++;
     }
 
+    let is_exist_flag = false;
     for(let i = 1; i <= count; i ++){
 
-        if(MONSTER_NAME.properties[i].category === monsterCategory){
-            isExistFlg = true;
+        if(MONSTER_NAME.properties[i].category === monster_category){
+            is_exist_flag = true;
             break;
         }
     }
 
-    if(!isExistFlg){
+    if(!is_exist_flag){
         bot.reply(message,"存在しないモンスターカテゴリです");
         return;
     }
@@ -66,7 +67,7 @@ function process(bot , message) {
     }
 
     else{
-        let register = registerModule(bot,message,con,MONSTER_NAME);
+        let register = register_module(bot,message,con,MONSTER_NAME);
         try{
             async.series(register,(err) =>{
             });

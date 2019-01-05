@@ -1,11 +1,11 @@
-var Botkit = require("botkit");
+var bot_kit = require("botkit");
 var async = require('async');
 var log = require('./log');
-let processModule = require('./process');
+let process_module = require('./process');
 
 require('date-utils');
 
-var controller = Botkit.slackbot({
+var controller = bot_kit.slackbot({
   debug: false       
   // include "log: false" to disable logging
   // or a "logLevel" integer from 0 to 7 to adjust logging verbosity
@@ -19,7 +19,7 @@ controller.spawn({
  * ドロップ数記録 / ドロップ数確認
  */
 controller.hears(["(.*)"] , ['direct_message'], (bot,message) =>{
-  let process = processModule(bot,message);
+  let process = process_module(bot,message);
   try{
     async.series(process,(err) =>{
 
